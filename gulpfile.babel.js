@@ -5,15 +5,15 @@ import livereload from 'gulp-livereload'
 import { watch } from './gulp/util'
 
 import './gulp/assets'
-import './gulp/browserify'
 import './gulp/css'
 import './gulp/html'
+import './gulp/js'
 
 gulp.task('default', [
   'assets',
-  'browserify',
   'css',
-  'html'
+  'html',
+  'js'
 ])
 
 gulp.task('watch', ['default'], () => {

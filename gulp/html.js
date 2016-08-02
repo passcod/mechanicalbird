@@ -1,4 +1,4 @@
-import { watch } from './util'
+import { dev, watch } from './util'
 import gulp from 'gulp'
 import htmlmin from 'gulp-htmlmin'
 import livereload from 'gulp-livereload'
@@ -8,7 +8,7 @@ import pug from 'gulp-pug'
 function html (name, file) {
   gulp.task(`html:${name}`, () => gulp.src(file)
     .pipe(newer('./dist/'))
-    .pipe(pug())
+    .pipe(pug({ locals: { dev } }))
     .pipe(htmlmin({
       collapseBooleanAttributes: true,
       collapseWhitespace: true,
