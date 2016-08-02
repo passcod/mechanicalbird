@@ -3,7 +3,11 @@ import gulp from 'gulp'
 import livereload from 'gulp-livereload'
 import newer from 'gulp-newer'
 
-const src = ['./src/assets/*']
+const src = [
+  './src/assets/*',
+  './node_modules/font-awesome/fonts/*'
+]
+
 const dst = './dist/assets/'
 
 gulp.task('assets', () => {

@@ -23,9 +23,11 @@ function makeb (entry) {
 
 const common = makeb('./src/js/common.js')
 common.require('domready')
+common.require('moment')
 
 const index = makeb('./src/js/index.js')
 index.external('domready')
+index.external('moment')
 index.external('react')
 index.external('react-dom')
 

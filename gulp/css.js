@@ -6,11 +6,16 @@ import gulp from 'gulp'
 import livereload from 'gulp-livereload'
 import postcss from 'gulp-postcss'
 import sourcemaps from 'gulp-sourcemaps'
+import url from 'postcss-url'
 
 function processors () {
   return [
     cssimport({
       formats: ['%', '%.css', '_%.css', '%/index.css']
+    }),
+    url({
+      url: (url) => url
+        .replace(/^\.\.\/fonts\//, '/assets/')
     }),
     cssnext({
       browsers: [
@@ -25,7 +30,8 @@ function processors () {
 
 const src = [
   './src/css/!(_*).css',
-  './node_modules/normalize.css/normalize.css'
+  './node_modules/normalize.css/normalize.css',
+  './node_modules/font-awesome/css/font-awesome.css'
 ]
 
 gulp.task('css', () => {

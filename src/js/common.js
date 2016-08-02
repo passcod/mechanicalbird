@@ -1,1 +1,2 @@
 import 'domready'
+import 'moment'
