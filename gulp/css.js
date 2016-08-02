@@ -1,3 +1,4 @@
+// @flow
 import { dev, watch } from './util'
 import cssimport from 'postcss-sassy-import'
 import cssnano from 'cssnano'

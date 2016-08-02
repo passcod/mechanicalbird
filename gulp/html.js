@@ -1,3 +1,4 @@
+// @flow
 import { dev, watch } from './util'
 import gulp from 'gulp'
 import htmlmin from 'gulp-htmlmin'
@@ -5,7 +6,7 @@ import livereload from 'gulp-livereload'
 import newer from 'gulp-newer'
 import pug from 'gulp-pug'
 
-function html (name, file) {
+function html (name/* : string */, file/* : string */) {
   gulp.task(`html:${name}`, () => gulp.src(file)
     .pipe(newer('./dist/'))
     .pipe(pug({ locals: { dev } }))

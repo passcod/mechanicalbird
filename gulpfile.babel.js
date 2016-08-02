@@ -1,3 +1,4 @@
+// @flow
 import { blue } from 'chalk'
 import gulp from 'gulp'
 import gutil from 'gulp-util'

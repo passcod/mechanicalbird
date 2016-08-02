@@ -34,6 +34,7 @@
     "postcss-sassy-import": "^1.2.3",
     "postcss-url": "^5.1.2",
     "react-addons-test-utils": "^15.1.0",
+    "redux-devtools": "^3.3.1",
     "rememberify": "^1.0.1",
     "standard": "^7.1.1",
     "tap": "^6.2.0",
@@ -52,6 +53,7 @@
     "normalize.css": "^4.1.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "vaire": "^1.1.3"
   },

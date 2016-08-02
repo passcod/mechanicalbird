@@ -1,3 +1,4 @@
+// @flow
 import gulp from 'gulp'
 import { dev, watch } from '../util'
 import { done, error } from './logging'

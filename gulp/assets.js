@@ -1,3 +1,4 @@
+// @flow
 import { watch } from './util'
 import gulp from 'gulp'
 import livereload from 'gulp-livereload'
