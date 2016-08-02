@@ -1,6 +1,6 @@
 // @flow
-import React from 'react'
 import Fonts from './fonts'
+import React from 'react'
 import Today from './today'
 import TopBar from './top-bar'
 

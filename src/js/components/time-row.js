@@ -1,11 +1,15 @@
 // @flow
-import React from 'react'
 import AtTime from './at-time'
+import React from 'react'
 import TimeBlock from './time-block'
 
-export default function TimeRow ({ ts, job } /* : { ts: Date, job: string } */) {
+export default function TimeRow ({ job, live = false, ts } /* : {
+  job: string,
+  live?: boolean,
+  ts: Date
+} */) {
   return <article className='time-row'>
-    <TimeBlock ts={ts} />
+    <TimeBlock live={live} ts={ts} />
     <span className='description'>{job}</span>
     <AtTime ts={ts} />
   </article>

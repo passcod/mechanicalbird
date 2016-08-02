@@ -3,7 +3,7 @@ nav {
   display: flex;
   flex-direction: row;
   font-size: 2rem;
-  height: calc(2em * 1.2);
+  height: calc(2em * 1.2 + 0.2em);
   line-height: 1.2;
   width: 100%;
 

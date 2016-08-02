@@ -1,6 +1,6 @@
 // @flow
-import React from 'react'
 import moment from 'moment'
+import React from 'react'
 
 export default function AtTime ({ ts } /* : { ts: Date } */) {
   const t = moment(ts)

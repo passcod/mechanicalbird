@@ -24,13 +24,21 @@ function makeb (entry) {
 
 const common = makeb('./src/js/common.js')
 common.require('domready')
+common.require('immutable')
 common.require('moment')
+
+const redux = makeb('./src/js/redux.js')
+redux.require('react-redux')
+redux.require('redux')
 
 const index = makeb('./src/js/index.js')
 index.external('domready')
+index.external('immutable')
 index.external('moment')
 index.external('react')
 index.external('react-dom')
+index.external('react-redux')
+index.external('redux')
 
 const react = makeb('./src/js/react.js')
 react.require('react')
@@ -55,8 +63,10 @@ function bundle (file, b) {
 gulp.task('js:common', () => bundle('common.js', common))
 gulp.task('js:index', () => bundle('index.js', index))
 gulp.task('js:react', () => bundle('react.js', react))
+gulp.task('js:redux', () => bundle('redux.js', redux))
 
 watch(() => gulp.watch(['./src/js/common.js'], ['js:common']))
 watch(() => gulp.watch(['./src/js/**/*.js'], ['js:index']))
 watch(() => gulp.watch(['./src/js/react.js'], ['js:react']))
-gulp.task('js', ['js:common', 'js:index', 'js:react'])
+watch(() => gulp.watch(['./src/js/redux.js'], ['js:redux']))
+gulp.task('js', ['js:common', 'js:index', 'js:react', 'js:redux'])
