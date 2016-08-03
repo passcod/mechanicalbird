@@ -5,10 +5,9 @@ import { description as save } from '../state/entry'
 import React from 'react'
 import TimeBlock from './time-block'
 
-function TimeRow ({ ts, entry, live = false, save } /* : {
+function TimeRow ({ ts, entry, save } /* : {
   ts: Date,
   entry: Object,
-  live?: boolean,
   save: Function
 } */) {
   const { description, end } = entry.toJS()

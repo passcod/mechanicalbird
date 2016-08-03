@@ -19,9 +19,11 @@ function render (end, date) {
   const d = diff(date, end)
   let m = d.minutes()
   if (m < 10) { m = '0' + m }
-  return [d.hours(), m].join(
-    (!end) && d.seconds() % 2 === 0 ? '\u202f' : ':'
-  )
+  return <span>
+    {d.hours()}
+    <span className='separator'>:</span>
+    {m}
+  </span>
 }
 
 export default function TimeBlock ({ end, ts } /* : {

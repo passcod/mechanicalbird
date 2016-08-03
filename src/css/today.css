@@ -6,6 +6,14 @@ section.today {
     font-weight: 100;
     text-align: center;
   }
+
+  &.live .time-row:first-child .separator {
+    animation: blinker steps(1) 1s infinite alternate;
+  }
+}
+
+@keyframes blinker {
+  50% { opacity: 0; }
 }
 
 .time-row {
@@ -13,11 +21,15 @@ section.today {
   display: flex;
   position: relative;
 
+  & time, & input {
+    padding-bottom: 0.5em;
+  }
+
   & .block {
     background-color: grey;
     display: flex;
     flex-direction: column;
-    height: 3em;
+    min-height: 2em;
     text-align: center;
     width: 3em;
 
