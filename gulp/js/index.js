@@ -1,6 +1,5 @@
 // @flow
 import gulp from 'gulp'
-import { dev, watch } from '../util'
 import { done, error } from './logging'
 import browserify from 'browserify'
 import buffer from 'vinyl-buffer'
@@ -9,7 +8,7 @@ import rememberify from 'rememberify'
 import source from 'vinyl-source-stream'
 import sourcemaps from 'gulp-sourcemaps'
 import transform from './transforms'
-import uglify from 'gulp-uglify'
+import { watch } from '../util'
 
 function makeb (entry) {
   const b = browserify({
@@ -45,16 +44,10 @@ react.require('react')
 react.require('react-dom')
 
 function bundle (file, b) {
-  b = b.bundle().on('error', error)
+  return b.bundle().on('error', error)
   .pipe(source(file))
   .pipe(buffer())
   .pipe(sourcemaps.init({ loadMaps: true }))
-
-  if (!dev) {
-    b = b.pipe(uglify())
-  }
-
-  return b
   .pipe(sourcemaps.write('.'))
   .pipe(gulp.dest('./dist/'))
   .pipe(livereload())
