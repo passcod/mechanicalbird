@@ -10,7 +10,7 @@ function diff (date, now = new Date()) {
 function render (live, ...args) {
   const d = diff(...args)
   let m = d.minutes()
-  if (m < 10) { m = '00' }
+  if (m < 10) { m = '0' + m }
   return [d.hours(), m].join(
     live && d.seconds() % 2 === 0 ? '\u202f' : ':'
   )
