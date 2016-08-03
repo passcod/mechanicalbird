@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "private": true,
+  "license": "ISC",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.11.4",
