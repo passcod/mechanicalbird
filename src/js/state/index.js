@@ -1,17 +1,20 @@
 // @flow
 import { createStore } from 'redux'
-import { List, Map as IMap } from 'immutable'
+import { OrderedMap, Map as IMap } from 'immutable'
 import Time from './time'
+import Entry from './entry'
 
 /* :: export type State = IMap<string, any> */
 
 const initialState = new IMap({
   on: false,
-  today: new List()
+  today: new OrderedMap()
 })
 
 function reducer (state/* : State */, action) {
   switch (action.type.split('_')[0]) {
+    case 'ENTRY':
+      return Entry(state, action)
     case 'TIME':
       return Time(state, action)
     default:

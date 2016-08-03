@@ -43,8 +43,11 @@ section.today {
   }
 
   & .description {
+    border: none;
     flex-grow: 1;
-    padding: 0 1em;
+    font-family: Raleway, sans-serif;
+    font-size: 1em;
+    margin: 0 1em;
   }
 
   & .at-time {

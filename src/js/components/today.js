@@ -4,10 +4,16 @@ import React from 'react'
 import TimeRow from './time-row'
 
 function Today ({ on, today }) {
+  let i = 0 // A bit obscure, but i++ === 0 only once, i.e. 'first row'
+
   return <section className='today'>
-    {today.map((entry, i) =>
-      <TimeRow key={i} entry={entry} live={on && i === 0} />
-    )}
+    {today.toSeq().reverse().map((entry, ts) =>
+      <TimeRow
+        entry={entry}
+        key={ts}
+        live={on && i++ === 0}
+        ts={ts} />
+    ).toArray()}
   </section>
 }
 
