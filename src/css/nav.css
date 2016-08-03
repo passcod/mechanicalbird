@@ -22,7 +22,7 @@ nav {
     text-transform: uppercase;
   }
 
-  & button {
+  & button.action {
     border-left: 0.4rem solid rebeccapurple;
     font-size: 3rem;
     padding: 0;
