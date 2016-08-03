@@ -12,7 +12,7 @@ function doStart (state/* : State */, ts/* : Date */) {
   return (
     // If we get a TIME_START while the timer is already running, we actually
     // want to stop it (so apply the effect of TIME_STOP before doing anything):
-    state.get('on') ? doStop(state) : state
+    state.get('on') ? doStop(state, ts) : state
 
   // In either case, do what we need to:
   ).set('on', true).setIn(['today', ts], new IMap({
@@ -21,7 +21,8 @@ function doStart (state/* : State */, ts/* : Date */) {
 }
 
 function doStop (state/* : State */, ts/* : Date */) {
-  return state.set('on', false)
+  const latest = state.get('today').findLastKey(() => true)
+  return state.set('on', false).setIn(['today', latest, 'end'], ts)
 }
 
 export default function (state/* : State */, action/* : TimeAction */) {
@@ -29,7 +30,7 @@ export default function (state/* : State */, action/* : TimeAction */) {
     case 'TIME_START':
       return doStart(state, action.ts)
     case 'TIME_STOP':
-      return doStop(state)
+      return doStop(state, action.ts)
   }
 }
 

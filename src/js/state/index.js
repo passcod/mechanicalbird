@@ -7,12 +7,12 @@ import Entry from './entry'
 /* :: export type State = IMap<string, any> */
 
 const storage = {
-  get (key, def) {
+  get (key/* : string */, def/* : any */) /* : any */ {
     const val = window.localStorage.getItem(key)
     if (val) { return JSON.parse(val) }
     return def
   },
-  set (key, val) {
+  set (key/* : string */, val/* : any */) {
     try {
       return window.localStorage.setItem(key, JSON.stringify(val))
     } catch (err) {
@@ -24,7 +24,9 @@ const storage = {
 const initialState = new IMap({
   on: storage.get('on', false),
   today: new OrderedMap(storage.get('today', []).map(([key, entry]) =>
-    [new Date(key), new IMap(entry)]
+    [new Date(key), new IMap(Object.assign(entry, {
+      end: entry.end ? new Date(entry.end) : undefined
+    }))]
   ))
 })
 
