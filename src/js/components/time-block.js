@@ -30,7 +30,11 @@ export default function TimeBlock ({ end, ts } /* : {
   end?: Date,
   ts: Date
 } */) {
-  return <span className='block' data-color={code(ts)}>
+  let height = diff(ts, end).asHours() * 4
+  if (height < 2) { height = 2 }
+  height += 'em'
+
+  return <span className='block' data-color={code(ts)} style={{ height }}>
     <Vaire dateTime={ts} format={render.bind(this, end)} />
   </span>
 }
