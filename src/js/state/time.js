@@ -15,14 +15,14 @@ function doStart (state/* : State */, ts/* : Date */) {
     state.get('on') ? doStop(state, ts) : state
 
   // In either case, do what we need to:
-  ).set('on', true).setIn(['today', ts], new IMap({
+  ).set('on', true).setIn(['entries', ts], new IMap({
     description: `Entry started at ${moment(ts).format('H:mm:ss')}`
   }))
 }
 
 function doStop (state/* : State */, ts/* : Date */) {
-  const latest = state.get('today').findLastKey(() => true)
-  return state.set('on', false).setIn(['today', latest, 'end'], ts)
+  const latest = state.get('entries').findLastKey(() => true)
+  return state.set('on', false).setIn(['entries', latest, 'end'], ts)
 }
 
 export default function (state/* : State */, action/* : TimeAction */) {

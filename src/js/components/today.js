@@ -1,6 +1,7 @@
 // @flow
 import classnames from 'classnames'
 import { connect } from 'react-redux'
+import moment from 'moment'
 import React from 'react'
 import TimeRow from './time-row'
 
@@ -16,9 +17,15 @@ function Today ({ on, today }) {
   </section>
 }
 
+function isToday (entry, ts) {
+  const midnight = moment().startOf('day')
+  return moment(ts).isAfter(midnight) ||
+    moment(entry.get('end') || null).isAfter(midnight)
+}
+
 export default connect(
   (state) => ({
     on: state.get('on'),
-    today: state.get('today')
+    today: state.get('entries').filter(isToday)
   })
 )(Today)

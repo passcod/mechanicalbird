@@ -9,11 +9,11 @@ import { OrderedMap } from 'immutable'
 } */
 
 function saveDescription (state, ts, description) {
-  return state.setIn(['today', ts, 'description'], description)
+  return state.setIn(['entries', ts, 'description'], description)
 }
 
 function sweepEntries (state) {
-  return state.set('on', false).set('today', new OrderedMap())
+  return state.set('on', false).set('entries', new OrderedMap())
 }
 
 export default function (state/* : State */, action/* : EntryAction */) {

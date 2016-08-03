@@ -1,0 +1,12 @@
+.sweep {
+  display: flex;
+
+  & button {
+    flex-grow: 1;
+    font-size: 1rem;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    padding: 0.5em;
+    text-transform: uppercase;
+  }
+}

@@ -6,28 +6,36 @@ import Vaire from 'vaire'
 
 const seed = pearson.seed()
 
-function code (ts/* : Date */) {
+export function code (ts/* : Date */) {
   return pearson(ts.toISOString(), 1, seed).toString('hex')[0]
 }
 
-function diff (date/* : Date */, end/* : ?Date */) {
+export function diff (date/* : Date */, end/* : ?Date */) {
   if (!end) { end = new Date() }
   return duration(end - date)
 }
 
-function render (end, date) {
-  const d = diff(date, end)
+export function pebble (d) {
   let m = d.minutes()
   if (m < 10) { m = '0' + m }
+
+  return <time dateTime={d.toJSON()} title={d.humanize()}>
+    {d.hours()}<span className='separator'>:</span>{m}
+  </time>
+}
+
+function render (end, date) {
+  const d = diff(date, end)
 
   let height = d.asHours() * 4
   if (height < 2) { height = 2 }
   height += 'em'
 
-  return <span className='block' data-color={code(date)} style={{ height }}>
-    <time dateTime={d.toJSON()} title={d.humanize()}>
-      {d.hours()}<span className='separator'>:</span>{m}
-    </time>
+  return <span
+    className='time-block'
+    data-color={code(date)}
+    style={{ height }}>
+    {pebble(d)}
   </span>
 }
 

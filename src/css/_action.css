@@ -1,0 +1,16 @@
+button.action {
+  background: rebeccapurple;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-shadow: 0 0 0.1em white;
+  transition: box-shadow 150ms, text-shadow 300ms;
+
+  &:active {
+    box-shadow: 0 0 0.4em 0 rgba(0, 0, 0, 0.75) inset;
+  }
+
+  &:hover {
+    text-shadow: 0 0 0 white;
+  }
+}

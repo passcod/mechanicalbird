@@ -21,9 +21,15 @@ const storage = {
   }
 }
 
+const today = storage.get('today')
+if (today) {
+  storage.set('entries', today)
+  window.localStorage.removeItem('today')
+}
+
 const initialState = new IMap({
   on: storage.get('on', false),
-  today: new OrderedMap(storage.get('today', []).map(([key, entry]) =>
+  entries: new OrderedMap(storage.get('entries', []).map(([key, entry]) =>
     [new Date(key), new IMap(Object.assign(entry, {
       end: entry.end ? new Date(entry.end) : undefined
     }))]
@@ -51,11 +57,6 @@ export default store
 
 store.subscribe(() => {
   const state = store.getState()
-  const today = []
-  state.get('today').forEach((entry, ts) => {
-    today.push([ ts, entry.toJS() ])
-  })
-
   storage.set('on', state.get('on'))
-  storage.set('today', today)
+  storage.set('entries', Array.from(state.get('entries').entries()))
 })

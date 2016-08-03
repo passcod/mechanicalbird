@@ -1,0 +1,33 @@
+.time-row {
+  align-items: center;
+  display: flex;
+  position: relative;
+
+  & time, & input {
+    padding-bottom: 0.5em;
+  }
+
+  & .description {
+    border: none;
+    flex-grow: 1;
+    font-family: Raleway, sans-serif;
+    font-size: 1em;
+    margin: 0 1em;
+  }
+
+  & .at-time {
+    font-weight: 100;
+    margin-right: 0.5em;
+    text-shadow: 1px 1px 0 white;
+  }
+
+  &::after {
+    background-color: rgba(0, 0, 0, 0.1);
+    bottom: 0;
+    content: '';
+    height: 0.4em;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+}

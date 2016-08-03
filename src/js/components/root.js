@@ -1,4 +1,5 @@
 // @flow
+import Before from './before'
 import Fonts from './fonts'
 import React from 'react'
 import Sweep from './sweep'
@@ -10,6 +11,7 @@ export default function Root () {
     <TopBar />
     <main>
       <Today />
+      <Before />
       <Sweep />
     </main>
     <Fonts />
