@@ -10,7 +10,7 @@ function isBefore (entry, ts) {
     moment(entry.get('end') || null).isBefore(midnight)
 }
 
-export default function Before ({ before }) {
+function Before ({ before }) {
   return <section className='before'>
     {before.toSeq().groupBy(
       (_, ts) => moment(ts).startOf('day')

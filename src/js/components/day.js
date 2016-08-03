@@ -2,10 +2,11 @@
 import moment from 'moment'
 import React from 'react'
 import TimeBrick from './time-brick'
+/* :: import { OrderedMap } from 'immutable' */
 
 export default function Day ({ ts, entries } /* : {
-  ts: Class<moment()>,
-  entries: Object[]
+  ts: moment.Moment,
+  entries: OrderedMap<Date, Object>
 } */) {
   return <article className='day'>
     <h1>{moment(ts).calendar(null, {

@@ -3,6 +3,7 @@ import { duration } from 'moment'
 import pearson from 'pearson'
 import React from 'react'
 import Vaire from 'vaire'
+/* :: import moment from 'moment' */
 
 const seed = pearson.seed()
 
@@ -15,7 +16,7 @@ export function diff (date/* : Date */, end/* : ?Date */) {
   return duration(end - date)
 }
 
-export function pebble (d) {
+export function pebble (d/* : moment.Duration */) {
   let m = d.minutes()
   if (m < 10) { m = '0' + m }
 
