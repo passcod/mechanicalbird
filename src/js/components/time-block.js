@@ -25,7 +25,9 @@ function render (end, date) {
   height += 'em'
 
   return <span className='block' data-color={code(date)} style={{ height }}>
-    <time>{d.hours()}<span className='separator'>:</span>{m}</time>
+    <time dateTime={d.toJSON()} title={d.humanize()}>
+      {d.hours()}<span className='separator'>:</span>{m}
+    </time>
   </span>
 }
 
