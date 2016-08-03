@@ -5,7 +5,7 @@ import React from 'react'
 import { start, stop } from '../state/time'
 
 function TheButton ({ on, start, stop }) {
-  return <button className='the-button' onClick={on ? stop : start}>
+  return <button className='action' onClick={on ? stop : start}>
     {on ? <Icon name='stop' /> : <Icon name='play' />}
   </button>
 }
