@@ -14,7 +14,6 @@ function saveDescription (state, ts, description) {
 export default function (state/* : State */, action/* : EntryAction */) {
   switch (action.type) {
     case 'ENTRY_DESCRIPTION':
-      console.debug('save', action.description)
       return saveDescription(state, action.ts, action.description)
   }
 }
