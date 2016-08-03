@@ -1,5 +1,11 @@
 section.today {
   padding: 1em;
+
+  & .empty {
+    font-size: 2em;
+    font-weight: 100;
+    text-align: center;
+  }
 }
 
 .time-row {
