@@ -16,12 +16,12 @@ function render (live, ...args) {
   )
 }
 
-export default function TimeBlock ({ live = false, ts } /* : {
+export default function TimeBlock ({ hashCode, live = false, ts } /* : {
+  hashCode?: string,
   live?: boolean,
   ts: Date
 } */) {
-  const height = 1
-  return <span className='block' data={{ height }}>
+  return <span className='block' data-color={hashCode}>
     <Vaire dateTime={ts} format={render.bind(this, live)} />
   </span>
 }

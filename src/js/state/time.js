@@ -1,6 +1,15 @@
 // @flow
-import { List } from 'immutable'
+import { List, Map as IMap } from 'immutable'
+import moment from 'moment'
 /* :: import type { State } from '.' */
+
+class Entry extends IMap {
+  constructor (ts, {
+    description = `Entry started at ${moment(ts).format('H:mm:ss')}`
+  } /* : EntryData */) {
+    super({ ts, description })
+  }
+}
 
 function doStart (state/* : State */, ts/* : Date */, data/* : ?EntryData */) {
   const ret = (
@@ -12,17 +21,12 @@ function doStart (state/* : State */, ts/* : Date */, data/* : ?EntryData */) {
   // And in any case...
   ).set('on', true)
 
-  return ret
+  const today = ret.get('today', new List())
+  return ret.set('today', today.unshift(new Entry(ts, data || {})))
 }
 
 function doStop (state/* : State */, ts/* : Date */) {
-  const ret = state.set('on', false)
-  const today = state.get('today', new List())
-  const latest = today.last()
-
-  // If there is no entry in the list, we can't do anything.
-  if (!latest) { return ret }
-  return ret
+  return state.set('on', false)
 }
 
 /* :: type TimeAction = {

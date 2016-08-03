@@ -5,11 +5,10 @@ section.today {
 .time-row {
   align-items: center;
   display: flex;
-  border-bottom: 1px solid transparent;
+  position: relative;
 
   & .block {
-    background: slategrey;
-    color: white;
+    background-color: grey;
     display: flex;
     flex-direction: column;
     height: 3em;
@@ -20,10 +19,47 @@ section.today {
       content: '';
       flex-grow: 1;
     }
+
+    & time {
+      color: white;
+    }
+
+    &[data-color='0'] { background-color: rebeccapurple; }
+    &[data-color='1'] { background-color: firebrick; }
+    &[data-color='2'] { background-color: mediumvioletred; }
+    &[data-color='3'] { background-color: orangered; }
+    &[data-color='4'] { background-color: slateblue; }
+    &[data-color='5'] { background-color: seagreen; }
+    &[data-color='6'] { background-color: teal; }
+    &[data-color='7'] { background-color: darkolivegreen; }
+    &[data-color='8'] { background-color: steelblue; }
+    &[data-color='9'] { background-color: midnightblue; }
+    &[data-color='a'] { background-color: sienna; }
+    &[data-color='b'] { background-color: goldenrod; }
+    &[data-color='c'] { background-color: brown; }
+    &[data-color='d'] { background-color: darkslategray; }
+    &[data-color='e'] { background-color: cadetblue; }
+    &[data-color='f'] { background-color: indianred; }
   }
 
   & .description {
     flex-grow: 1;
     padding: 0 1em;
+  }
+
+  & .at-time {
+    font-weight: 100;
+    margin-right: 0.5em;
+    text-shadow: 1px 1px 0 white;
+  }
+
+  &::after {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 0.4em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
   }
 }
