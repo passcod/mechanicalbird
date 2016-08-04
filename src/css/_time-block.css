@@ -1,5 +1,6 @@
 .time-block {
   background-color: grey;
+  color: white;
   display: flex;
   flex-direction: column;
   min-height: 2em;
@@ -12,7 +13,8 @@
   }
 
   & time {
-    color: white;
+    color: inherit;
+    cursor: default;
   }
 
   &[data-color='0'] { background-color: rebeccapurple; }
