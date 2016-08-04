@@ -1,8 +1,9 @@
 // @flow
 import { createStore } from 'redux'
+import { eddsa } from 'jodid25519'
+import Entry from './entry'
 import { OrderedMap, Map as IMap } from 'immutable'
 import Time from './time'
-import Entry from './entry'
 
 /* :: export type State = IMap<string, any> */
 
@@ -33,7 +34,8 @@ const initialState = new IMap({
     [new Date(key), new IMap(Object.assign(entry, {
       end: entry.end ? new Date(entry.end) : undefined
     }))]
-  ))
+  )),
+  key: storage.get('key', eddsa.generateKeySeed())
 })
 
 function reducer (state/* : State */, action) {
@@ -59,4 +61,5 @@ store.subscribe(() => {
   const state = store.getState()
   storage.set('on', state.get('on'))
   storage.set('entries', Array.from(state.get('entries').entries()))
+  storage.set('key', state.get('key'))
 })

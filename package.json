@@ -47,6 +47,7 @@
     "domready": "^1.0.8",
     "font-awesome": "^4.6.3",
     "immutable": "^3.8.1",
+    "jodid25519": "^1.0.2",
     "moment": "^2.13.0",
     "normalize.css": "^4.1.1",
     "pearson": "0.0.1",
