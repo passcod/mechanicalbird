@@ -44,4 +44,4 @@ gulp.task('css', () => {
   .pipe(livereload())
 })
 
-watch(() => gulp.watch(src, ['css']))
+watch(() => gulp.watch('./src/css/**/*.css', ['css']))
