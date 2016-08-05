@@ -21,6 +21,10 @@
     text-shadow: 1px 1px 0 white;
   }
 
+  & .time-block {
+    max-height: calc(4 * 6em);
+  }
+
   &::after {
     background-color: rgba(0, 0, 0, 0.1);
     bottom: 0;
