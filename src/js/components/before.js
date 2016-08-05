@@ -16,7 +16,7 @@ function Before ({ before }) {
       (_, ts) => moment(ts).startOf('day')
     ).sortBy((_, day) => day).map((entries, day) =>
       <Day key={day} ts={day} entries={entries} />
-    ).toArray()}
+    ).reverse().toArray()}
   </section>
 }
 
