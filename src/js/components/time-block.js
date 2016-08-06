@@ -1,14 +1,13 @@
 // @flow
 import { duration } from 'moment'
-import pearson from 'pearson'
+import pearson, { bytesToHex, seed } from '../pearson'
 import React from 'react'
 import Vaire from 'vaire'
 /* :: import moment from 'moment' */
 
-const seed = pearson.seed()
-
+const preseed = seed()
 export function code (ts/* : Date */) {
-  return pearson(ts.toISOString(), 1, seed).toString('hex')[0]
+  return bytesToHex(pearson(ts.toISOString(), preseed))[0]
 }
 
 export function diff (date/* : Date */, end/* : ?Date */) {
