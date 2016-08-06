@@ -19,18 +19,18 @@
 
   &[data-color='0'] { background-color: rebeccapurple; }
   &[data-color='1'] { background-color: firebrick; }
-  &[data-color='2'] { background-color: mediumvioletred; }
-  &[data-color='3'] { background-color: orangered; }
-  &[data-color='4'] { background-color: slateblue; }
-  &[data-color='5'] { background-color: seagreen; }
+  &[data-color='2'] { background-color: sienna; }
+  &[data-color='3'] { background-color: slateblue; }
+  &[data-color='4'] { background-color: seagreen; }
+  &[data-color='5'] { background-color: brown; }
   &[data-color='6'] { background-color: teal; }
-  &[data-color='7'] { background-color: darkolivegreen; }
-  &[data-color='8'] { background-color: steelblue; }
-  &[data-color='9'] { background-color: midnightblue; }
-  &[data-color='a'] { background-color: sienna; }
-  &[data-color='b'] { background-color: goldenrod; }
-  &[data-color='c'] { background-color: brown; }
-  &[data-color='d'] { background-color: darkslategray; }
-  &[data-color='e'] { background-color: cadetblue; }
+  &[data-color='7'] { background-color: mediumvioletred; }
+  &[data-color='8'] { background-color: darkolivegreen; }
+  &[data-color='9'] { background-color: steelblue; }
+  &[data-color='a'] { background-color: orangered; }
+  &[data-color='b'] { background-color: cadetblue; }
+  &[data-color='c'] { background-color: midnightblue; }
+  &[data-color='d'] { background-color: goldenrod; }
+  &[data-color='e'] { background-color: darkslategray; }
   &[data-color='f'] { background-color: indianred; }
 }
