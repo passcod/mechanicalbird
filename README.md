@@ -3,9 +3,9 @@
 [![Travis](https://img.shields.io/travis/passcod/mechanicalbird.svg?style=flat-square)](https://travis-ci.org/passcod/mechanicalbird)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg?style=flat-square)](https://spdx.org/licenses/ISC.html)
 
-_A simple clever work timer._
+_A timer and work tracker. Sometimes the simpler things are best._
 
-![Screenshot](https://cloud.githubusercontent.com/assets/155787/17354678/f5e7bdf2-599e-11e6-8392-a89fde6f5e89.png)
+![Screenshot](https://cloud.githubusercontent.com/assets/155787/17456706/7be4d8ca-5c35-11e6-9eb0-5a44f1d2ed28.png)
 
 ## Use
 
