@@ -89,33 +89,22 @@ function syncAction (state, action) {
   console.debug('payload', payload)
 
   const sum = hash(payload)
-  console.debug('hash', sum)
-
   const nonce = randomBytes(box.nonceLength)
-  console.debug('nonce', nonce)
-
   const boxed = box(payload, nonce,
     state.getIn(['keys', 'local', 'publicKey']), // signing key
     state.getIn(['keys', 'server', 'secretKey']) // crypting key
   )
-  console.debug('boxed', boxed)
 
   const keyNonce = randomBytes(box.nonceLength)
-  console.debug('key.nonce', keyNonce)
-
   const keyBoxed = box(
     state.getIn(['keys', 'server', 'secretKey']), // payload
     keyNonce,
     state.getIn(['keys', 'local', 'publicKey']), // signing key
     state.getIn(['keys', 'local', 'secretKey']) // crypting key
   )
-  console.debug('key.boxed', keyBoxed)
 
   const keyHash = hash(state.getIn(['keys', 'server', 'publicKey']))
-  console.debug('key.hash', keyHash)
-
   const ownHash = hash(state.getIn(['keys', 'local', 'publicKey']))
-  console.debug('own.hash', ownHash)
 
   console.table({
     keys: {
@@ -123,10 +112,14 @@ function syncAction (state, action) {
       fingerprint: keyHash,
       nonce: keyNonce,
       key: keyBoxed
-    },
+    }
+  })
+
+  console.table({
     actions: {
       key: keyHash,
       nonce,
+      hash: sum,
       payload: boxed
     }
   })
