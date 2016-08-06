@@ -20,7 +20,8 @@ function Today ({ on, today }) {
 function isToday (entry, ts) {
   const midnight = moment().startOf('day')
   return moment(ts).isAfter(midnight) ||
-    moment(entry.get('end') || null).isAfter(midnight)
+    !entry.get('end') || // An entry without an end is still running
+    moment(entry.get('end')).isAfter(midnight)
 }
 
 export default connect(
