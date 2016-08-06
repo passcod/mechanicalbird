@@ -1,4 +1,4 @@
-import { randomBytes } from 'crypto'
+import { randomBytes } from 'tweetnacl'
 
 export function bytesToHex (bytes/* : Uint8Array */) /* : string */ {
   return Array.from(bytes).reduce((memo, byte) =>
@@ -12,7 +12,7 @@ export function strToU8 (str/* : string */) /* : Uint8Array */ {
 }
 
 export function seed () /* : Uint8Array */ {
-  return Uint8Array.from(randomBytes(256))
+  return randomBytes(256)
 }
 
 export default function pearson (

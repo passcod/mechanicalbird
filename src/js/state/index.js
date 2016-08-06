@@ -1,11 +1,15 @@
 // @flow
+import { box } from 'tweetnacl'
 import { createStore } from 'redux'
-import { eddsa } from 'jodid25519'
 import Entry from './entry'
 import { OrderedMap, Map as IMap } from 'immutable'
 import Time from './time'
 
 /* :: export type State = IMap<string, any> */
+
+window.Uint8Array.prototype.toJSON = function () {
+  return Array.from(this)
+}
 
 const storage = {
   get (key/* : string */, def/* : any */) /* : any */ {
@@ -28,6 +32,14 @@ if (today) {
   window.localStorage.removeItem('today')
 }
 
+function deckeys (keys) {
+  if (!Array.isArray(keys.publicKey)) { return keys }
+  return {
+    publicKey: Uint8Array.from(keys.publicKey),
+    secretKey: Uint8Array.from(keys.secretKey)
+  }
+}
+
 const initialState = new IMap({
   on: storage.get('on', false),
   entries: new OrderedMap(storage.get('entries', []).map(([key, entry]) =>
@@ -35,7 +47,10 @@ const initialState = new IMap({
       end: entry.end ? new Date(entry.end) : undefined
     }))]
   )),
-  key: storage.get('key', eddsa.generateKeySeed())
+  keys: new IMap({
+    local: new IMap(deckeys(storage.get('lkey', box.keyPair()))),
+    server: new IMap(deckeys(storage.get('skey', box.keyPair())))
+  })
 })
 
 function reducer (state/* : State */, action) {

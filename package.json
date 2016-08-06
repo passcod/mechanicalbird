@@ -48,7 +48,6 @@
     "domready": "^1.0.8",
     "font-awesome": "^4.6.3",
     "immutable": "^3.8.1",
-    "jodid25519": "^1.0.2",
     "moment": "^2.13.0",
     "normalize.css": "^4.1.1",
     "react": "^15.1.0",
@@ -56,6 +55,7 @@
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
     "text-encoding": "^0.6.0",
+    "tweetnacl": "^0.14.3",
     "vaire": "^1.2.1"
   },
   "standard": {
