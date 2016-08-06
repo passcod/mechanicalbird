@@ -55,6 +55,7 @@
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "text-encoding": "^0.6.0",
     "vaire": "^1.2.1"
   },
   "standard": {
