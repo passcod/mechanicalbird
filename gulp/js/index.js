@@ -10,16 +10,20 @@ import sourcemaps from 'gulp-sourcemaps'
 import transform from './transforms'
 import { watch } from '../util'
 
-function makeb (entry) {
-  const b = browserify({
+function makeb (entry, opts = {}) {
+  const b = browserify(Object.assign({}, {
     debug: true,
     entries: [entry],
     transform
-  }).plugin(rememberify)
+  }, opts)).plugin(rememberify)
 
   b.on('log', done)
   return b
 }
+
+// For statistical (with disc) purposes only
+const all = makeb('./src/js/index.js', { fullPaths: true })
+gulp.task('js:all', () => bundle('all.js', all))
 
 const common = makeb('./src/js/common.js')
 common.require('domready')
