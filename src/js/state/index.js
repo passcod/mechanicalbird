@@ -1,8 +1,9 @@
 // @flow
-import { box } from 'tweetnacl'
+import { box, hash, randomBytes } from 'tweetnacl'
 import { createStore } from 'redux'
 import Entry from './entry'
 import { OrderedMap, Map as IMap } from 'immutable'
+import { strToU8 } from '../pearson'
 import Time from './time'
 
 /* :: export type State = IMap<string, any> */
@@ -54,6 +55,7 @@ const initialState = new IMap({
 })
 
 function reducer (state/* : State */, action) {
+  syncAction(state, action)
   switch (action.type.split('_')[0]) {
     case 'ENTRY':
       return Entry(state, action)
@@ -76,5 +78,56 @@ store.subscribe(() => {
   const state = store.getState()
   storage.set('on', state.get('on'))
   storage.set('entries', Array.from(state.get('entries').entries()))
-  storage.set('key', state.get('key'))
+  storage.set('lkey', state.getIn(['keys', 'local']))
+  storage.set('skey', state.getIn(['keys', 'server']))
 })
+
+function syncAction (state, action) {
+  const payload = strToU8(JSON.stringify(Object.assign({
+    issued: (new Date()).toISOString()
+  }, action)))
+  console.debug('payload', payload)
+
+  const sum = hash(payload)
+  console.debug('hash', sum)
+
+  const nonce = randomBytes(box.nonceLength)
+  console.debug('nonce', nonce)
+
+  const boxed = box(payload, nonce,
+    state.getIn(['keys', 'local', 'publicKey']), // signing key
+    state.getIn(['keys', 'server', 'secretKey']) // crypting key
+  )
+  console.debug('boxed', boxed)
+
+  const keyNonce = randomBytes(box.nonceLength)
+  console.debug('key.nonce', keyNonce)
+
+  const keyBoxed = box(
+    state.getIn(['keys', 'server', 'secretKey']), // payload
+    keyNonce,
+    state.getIn(['keys', 'local', 'publicKey']), // signing key
+    state.getIn(['keys', 'local', 'secretKey']) // crypting key
+  )
+  console.debug('key.boxed', keyBoxed)
+
+  const keyHash = hash(state.getIn(['keys', 'server', 'publicKey']))
+  console.debug('key.hash', keyHash)
+
+  const ownHash = hash(state.getIn(['keys', 'local', 'publicKey']))
+  console.debug('own.hash', ownHash)
+
+  console.table({
+    keys: {
+      owner: ownHash,
+      fingerprint: keyHash,
+      nonce: keyNonce,
+      key: keyBoxed
+    },
+    actions: {
+      key: keyHash,
+      nonce,
+      payload: boxed
+    }
+  })
+}
