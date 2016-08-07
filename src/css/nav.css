@@ -15,7 +15,7 @@ nav {
   & h1 {
     /* Auto-resizing text (with a background-size:contain SVG) with the actual
      text hidden and cursor:default'ed away but still there for readers/a11y. */
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="32" viewBox="0 0 1200 320"><text x="0" y="140" font-size="173">MECHANICAL</text><text x="0" y="295" font-size="173">BIRD</text><style>text{fill:rebeccapurple;font-family:Raleway,sans-serif;font-weight:900;}</style></svg>');
+    background-image: url('/assets/header.svg');
     background-position: center left;
     background-repeat: no-repeat;
     background-size: contain;
