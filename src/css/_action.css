@@ -1,6 +1,7 @@
 button.action {
   background: rebeccapurple;
   border: none;
+  border-radius: 0;
   color: white;
   cursor: pointer;
   text-shadow: 0 0 0.1em white;
