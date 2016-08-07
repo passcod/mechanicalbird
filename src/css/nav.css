@@ -13,18 +13,22 @@ nav {
   }
 
   & h1 {
+    /* Auto-resizing text (with a background-size:contain SVG) with the actual
+     text hidden and cursor:default'ed away but still there for readers/a11y. */
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="32" viewBox="0 0 1200 320"><text x="0" y="140" font-size="173">MECHANICAL</text><text x="0" y="295" font-size="173">BIRD</text><style>text{fill:rebeccapurple;font-family:Raleway,sans-serif;font-weight:900;}</style></svg>');
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: transparent;
+    cursor: default;
     flex-grow: 1;
-    font-size: 1.3em;
-    font-weight: 900;
-    line-height: 0.9;
+    font-size: 1.3px;
     margin: 0;
-    text-align: left;
-    text-transform: uppercase;
   }
 
   & button.action {
     border-left: 0.4rem solid rebeccapurple;
-    font-size: 3rem;
+    font-size: 1.5em;
     padding: 0;
     width: 1.7em;
   }
