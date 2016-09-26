@@ -23,7 +23,7 @@
     "envify": "^3.4.0",
     "flow-bin": "^0.32.0",
     "gulp": "^3.8.8",
-    "gulp-htmlmin": "^2.0.0",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-livereload": "^3.8.1",
     "gulp-newer": "^1.1.0",
     "gulp-postcss": "^6.1.1",
