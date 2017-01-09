@@ -39,7 +39,7 @@
     "rememberify": "^1.0.1",
     "standard": "^8.0.0",
     "surge": "^0.18.0",
-    "tap": "^7.1.2",
+    "tap": "^9.0.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
