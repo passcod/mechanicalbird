@@ -21,7 +21,6 @@
     "cssnano": "^3.7.3",
     "disc": "^1.3.2",
     "envify": "^4.0.0",
-    "flow-bin": "^0.32.0",
     "gulp": "^3.8.8",
     "gulp-htmlmin": "^3.0.0",
     "gulp-livereload": "^3.8.1",
@@ -71,12 +70,11 @@
     "start": "http-server ./dist -p 8181",
     "tap": "test/run 'test/*.spec.js'",
     "test": "npm run -s tap",
-    "posttest": "flow check && standard",
+    "posttest": "standard",
     "watch": "nodemon -w gulp -w gulpfile.babel.js -w package.json -e js,json -x 'gulp watch'"
   },
   "greenkeeper": {
     "ignore": [
-      "flow-bin",
       "standard"
     ]
   }
