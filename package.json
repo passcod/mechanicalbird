@@ -29,7 +29,7 @@
     "gulp-pug": "^3.0.3",
     "gulp-sourcemaps": "^2.0.1",
     "gulp-util": "^3.0.7",
-    "http-server": "^0.10.0",
+    "http-server": "^0.11.0",
     "nodemon": "^1.9.2",
     "postcss-cssnext": "^3.0.0",
     "postcss-sassy-import": "^1.2.3",
