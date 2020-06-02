@@ -1,7 +1,5 @@
 # Mechanical Bird
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/passcod/mechanicalbird.svg)](https://greenkeeper.io/)
-
 [![Travis](https://img.shields.io/travis/passcod/mechanicalbird.svg?style=flat-square)](https://travis-ci.org/passcod/mechanicalbird)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg?style=flat-square)](https://spdx.org/licenses/ISC.html)
 
@@ -49,6 +47,10 @@ $ npm watch -s
 # Finally, in your browser:
 $ open http://localhost:8181
 ```
+
+## Contribute
+
+This project operates on [the Caretaker model](https://caretaker.passcod.name) rather than usual open source rules.
 
 ## Deploy
 
